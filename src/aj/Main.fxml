@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="aj.MainController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+              <MenuItem id="menuItemClose" fx:id="menuItemClose" mnemonicParsing="false" onAction="#menuHandler" text="Close" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem id="menuItemAbout" fx:id="menuItemAbout" mnemonicParsing="false" onAction="#menuHandler" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <Text fx:id="textDescription" strokeType="OUTSIDE" strokeWidth="0.0" text="This app demonstrates a scenario with 4+ moving cars, any brake attempted by a driver in a front car will lead other drivers in the back to brake as well. You are required to click on the car(s) that needs to be put into brake immediately upon a hazard with the tolerable delay is 3 seconds." wrappingWidth="1180.0">
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Text>
+            <Separator />
+            <FlowPane>
+               <children>
+                  <Button fx:id="buttonStart" defaultButton="true" mnemonicParsing="false" onAction="#buttonStartClicked" text="Start">
+                     <FlowPane.margin>
+                        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                     </FlowPane.margin>
+                  </Button>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="with">
+                     <FlowPane.margin>
+                        <Insets left="10.0" />
+                     </FlowPane.margin>
+                  </Text>
+                  <ComboBox fx:id="comboCars">
+                     <FlowPane.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </FlowPane.margin>
+                  </ComboBox>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="cars in" />
+                  <ComboBox fx:id="comboMinutes">
+                     <FlowPane.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </FlowPane.margin>
+                  </ComboBox>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="min" />
+                  <Separator orientation="VERTICAL">
+                     <FlowPane.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </FlowPane.margin>
+                  </Separator>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@hit.png" />
+                     </image>
+                     <FlowPane.margin>
+                        <Insets />
+                     </FlowPane.margin>
+                  </ImageView>
+                  <Text fx:id="textHit" strokeType="OUTSIDE" strokeWidth="0.0" text="Hit: 0">
+                     <FlowPane.margin>
+                        <Insets left="10.0" right="20.0" />
+                     </FlowPane.margin>
+                  </Text>
+                  <ImageView fitHeight="24.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@miss.png" />
+                     </image>
+                  </ImageView>
+                  <Text fx:id="textMissed" strokeType="OUTSIDE" strokeWidth="0.0" text="Missed: 0">
+                     <FlowPane.margin>
+                        <Insets left="10.0" />
+                     </FlowPane.margin>
+                  </Text>
+                  <Separator orientation="VERTICAL">
+                     <FlowPane.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </FlowPane.margin>
+                  </Separator>
+                  <Text fx:id="textTime" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="0:00">
+                     <font>
+                        <Font size="48.0" />
+                     </font>
+                     <FlowPane.margin>
+                        <Insets />
+                     </FlowPane.margin>
+                     <effect>
+                        <Glow level="1.0" />
+                     </effect>
+                  </Text>
+               </children>
+            </FlowPane>
+            <Separator />
+            <Pane fx:id="paneCanvas">
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </Pane>
+         </children>
+      </VBox>
+   </center>
+   <bottom>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <Separator />
+            <HBox alignment="CENTER_LEFT">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Update frame very" />
+                  <ComboBox fx:id="comboFps">
+                     <HBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </HBox.margin>
+                  </ComboBox>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="miliseconds (smaller is better)" />
+                  <Button fx:id="buttonReport" mnemonicParsing="false" onAction="#buttonReportClicked" text="View Report...">
+                     <HBox.margin>
+                        <Insets left="10.0" right="10.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </HBox>
+            <HBox alignment="CENTER">
+               <children>
+                  <Text fx:id="textHazard" strokeType="OUTSIDE" strokeWidth="0.0" text="Hazard!!! Click to response in:">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets />
+                     </HBox.margin>
+                  </Text>
+                  <Text fx:id="textResponseTime" fill="RED" strokeType="OUTSIDE" strokeWidth="0.0" text="3">
+                     <font>
+                        <Font size="80.0" />
+                     </font>
+                     <effect>
+                        <Glow level="1.0" />
+                     </effect>
+                     <HBox.margin>
+                        <Insets left="20.0" />
+                     </HBox.margin>
+                  </Text>
+               </children>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+               <padding>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </padding>
+            </HBox>
+         </children>
+      </VBox>
+   </bottom>
+</BorderPane>
